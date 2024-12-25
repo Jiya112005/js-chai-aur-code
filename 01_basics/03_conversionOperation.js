@@ -17,8 +17,22 @@ let booleanIsLoggedIn=Boolean(isLoggedIn)  //number to boolean conversion also s
 
 let someNumber = 33
 let stringNumber = String(someNumber)
-console.log(stringNumber)
-console.log(typeof stringNumber) //this are conversions and needed to convert the values from browser to number or boolean,objects or array from string 
+// console.log(stringNumber)
+// console.log(typeof stringNumber) //this are conversions and needed to convert the values from browser to number or boolean,objects or array from string 
 
 /**************Operations************************/
+//important ones
+let value = 3
+let negativeValue = -value
+//console.log(negativeValue); //prints -3
+//basic op: +,-,*,**,/,%
+//tricky operations
+let str1 = "hello"
+let str2 = " Jiya"
+let str3 = str1 + str2
+// console.log(str3); //easy
+console.log("1"+2)
+console.log(1+"2")
+console.log("1"+2+2) //122
+console.log(1+2+"2")//32
 
