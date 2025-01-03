@@ -31,4 +31,53 @@ function addTwoNumbers(number1,number2){
 }
 
 const result = addTwoNumbers(3,5)
-console.log(`Result:${result}`);
+// console.log(`Result:${result}`);
+
+//Another example to understand in a better way return
+function loginInUserMessage(username="sam"){
+    if(!username){ //if username = undefined considered as false value equivalent to (username===undefined) or if no value provided by user then you can provide default value 
+        console.log("Please enter valid username");
+        return
+    }
+    return `${username} logged in`
+}
+// loginInUserMessage("hitesh") //prints nothing beacause of return statement it should be in console log.
+// console.log(loginInUserMessage("Jay")); //prints jay logged in 
+
+/* In cases like no parameter is passed then undefines  takes place 
+    2. Another case can be even if it is not string then also takes value as datatype is not defined here hence even if I provide null it takes it or no value  */
+// console.log(loginInUserMessage()) //prints undefined logged in 
+
+
+/*******************************Shopping Cart example (number of arguments not known)*************************************/
+function calculateCartPrice(...num1){
+    return num1
+}
+//console.log(calculateCartPrice(200,300,400)); //normal function mein sirf first number pass kiya hua print hoga hence use of rest and spread operator 
+// console.log(calculateCartPrice(200,300,400)); //returns array [200,300,400]
+
+
+/*********Object passing in function *******************/
+const user = {
+    username:"Jayesh",
+    price:299
+}
+function handleObject(anyobject){
+    console.log(`Username is ${anyobject.username} and price is ${anyobject.price}`);
+    
+}
+//checking the property you are passing is available or not and whether the value you are passsing its datatype is available or not 
+//example if here price in user is changed to prices then output of price will be undefined 
+// handleObject(user)
+// handleObject({
+//     username:"Krishna",
+//     price:399
+// })
+
+/*******************Passing arrays in function*************************** */
+const myNewArray = [200,300,500,340]
+
+function returnSecondValue(getArray){
+    return getArray[1]
+}
+console.log(returnSecondValue(myNewArray));
