@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM CHAI AUR CODE</title>
+</head>
+<body style="background-color:#212121;color:#fff">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    /* adding one more list item is the target using js  */
+    /* For adding more items function is best to use  */
+    function addLanguage(langName){
+        //list item element create
+        const li = document.createElement('li')
+        li.innerHTML=langName //here usage of innerHtml 
+        document.querySelector('.language').appendChild(li) //problem:only one item selected so tree traversal is minimal but not works in more selectors 
+    }
+    //space saving function
+    function addOptiLanguage(langName){
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(langName)) //here use of appendChild optimized approach
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage("python")
+    addLanguage("JAVA")
+    addLanguage("typeScript")
+    addOptiLanguage('goLang') //add language 
+
+    //Edit ?
+    const secondLang = document.querySelector("li:nth-child(2)")
+    //ways to change this
+    //1st
+    // secondLang.innerHTML = "Mojo"
+    //2nd appoarch
+    // const newli= document.createElement('li')
+    // newli.textContent = "Mojo"
+    // secondLang.replaceWith(newli)
+    //3rd method
+    const firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML = '<li>TypeScript</li>'
+
+
+    /*remove */
+    const lastlang = document.querySelector('li:last-child')
+    lastlang.remove()
+</script>
+</html>
