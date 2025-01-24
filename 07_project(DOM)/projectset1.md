@@ -1,8 +1,8 @@
-#DOM Basic projects 
+DOM Basic projects 
 
-#project 1 color changer
+project 1 color changer
 
-#Html file 
+Html file 
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +29,7 @@
 </html>
 ```
 
-#css file
+css file
 
 ```
 html{
@@ -66,7 +66,7 @@ span{
     background-color: yellow;
 }
 ```
-#js file
+js file
 ```
 const buttons = document.querySelectorAll('.button');
 // console.log(buttons)  //returns the nodelist
@@ -105,8 +105,8 @@ buttons.forEach( function(button){
 ```
 
 
-#project 2 BMI calculator
-#only js file
+project 2 BMI calculator
+only js file
 project 2
 ```
 //first form selection due to submit event
@@ -139,4 +139,62 @@ form.addEventListener('submit', function (e) {
   }
 });
 
+```
+
+Project 3 digital clock using of setInterval method basic 
+HTML file
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Clock</title>
+    <style>
+      body {
+        background-color: #212121;
+        color: #fff;
+      }
+      .center {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      #clock {
+        background-color: orange;
+        font-size: 40px;
+        padding: 20px 20px;
+        margin-top: 10px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="center">
+      <div id="banner">
+        <span>Your Local Time</span>
+        <div id="clock"></div>
+      </div>
+    </div>
+    <script src="digiclock.js"></script>
+  </body>
+</html>
+
+```
+
+Js file
+
+```
+const clock = document.getElementById('clock')
+//or use query selector
+
+
+setInterval(function(){
+    let date = new Date()
+    // console.log(date.toLocaleTimeString());
+    clock.innerHTML = date.toLocaleTimeString();
+},1000)
 ```
