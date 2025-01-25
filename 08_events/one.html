@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body style="background-color: #414141;color: aliceblue;">
+    <h2>Amazing images</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    //events run sequentially in javascript there are some exceptions
+    //async is not sequential in js example
+    //in inside the html tag to apply click on image then write onclick="alert('owl')" but in js it is not right approach in future if it is scalable but in react it is different case
+    //hence second approach is
+    // document.getElementById('owl').onclick = function(){
+        /*Other approaches*/
+        //attachEvent
+        //Jquery
+        /*WHAT TO LEARN MAIN IN EVENTS
+        1. type,timeStamp,deafaultPrevented
+        2. target,toElement,srcElement,currentTarget
+        3. clientx,clientY,screenX,screenY
+        4. altkey,ctrlkey,shiftkey,keyCode (keys effect) */
+        
+    /*Best approach below*/
+    //  document.getElementById('images').addEventListener('click',function(e){
+    //          console.log("clicked inside th ul")
+    //     },false) //third parameter default false used in some application
+     
+    //     document.getElementById('owl').addEventListener('click',function(e){
+    //          console.log("clicked owl")
+    //          e.stopPropagation()
+    //     },false) //third parameter default false used in some application
+        
+
+    // /*Since the images is parent and owl is its child hence if owl is clicked 
+    //    then the images click event will also occur so question is which event will be occur first 
+    //    so if clicked on owl the images one will also occur and the events occur from bottom to top
+    //    in event tree and hence called bubbling (false)
+       
+    //    event capturing: (true) goes top to bottom 
+    //    so use true and false according to the use case  
+       
+    //    in some case when propagation not needed then make use of e object and stoppropagation method*/
+    //     //event propogation two use event bubbling and event capturing 
+
+    //     document.getElementById('google').addEventListener('click',function(e){
+            
+    //         e.preventDefault()
+    //         e.stopPropagation()
+    //         console.log("google clicked");
+    //     },false)
+    
+    
+
+    /*PROJECT STYLE WORKING with events 
+        target: when clicked on image and image disappears 
+
+    */
+
+    document.querySelector('#images').addEventListener('click',function(e){
+        console.log(e.target.tagName);
+        if(e.target.tagName==='IMG'){
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+         // removeIt.parentNode.removeChild(removeIt)   //the parentnode returns ul and then ul's child is li removed 
+        }
+         //problem is it removes whole unordered list instead of image 
+    },false)
+
+  
+  </script>
+</html>
