@@ -3,7 +3,7 @@ DOM Basic projects
 project 1 color changer
 
 Html file 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -31,7 +31,7 @@ Html file
 
 css file
 
-```
+```css
 html{
     margin: 0;
 }
@@ -67,7 +67,7 @@ span{
 }
 ```
 js file
-```
+```javascript
 const buttons = document.querySelectorAll('.button');
 // console.log(buttons)  //returns the nodelist
 const bodyPage = document.querySelector('body');
@@ -108,7 +108,7 @@ buttons.forEach( function(button){
 project 2 BMI calculator
 only js file
 project 2
-```
+```javascript
 //first form selection due to submit event
 const form = document.querySelector('form');
 // const height= parseInt(document.querySelector('#height').value) //this usecase will give you an empty value written before providing value
@@ -144,7 +144,7 @@ form.addEventListener('submit', function (e) {
 Project 3 digital clock using of setInterval method basic 
 HTML file
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -187,7 +187,7 @@ HTML file
 
 Js file
 
-```
+```javascript
 const clock = document.getElementById('clock')
 //or use query selector
 
@@ -197,4 +197,115 @@ setInterval(function(){
     // console.log(date.toLocaleTimeString());
     clock.innerHTML = date.toLocaleTimeString();
 },1000)
+```
+
+Project 4 guess the number game 
+
+js file
+
+```javascript
+let randomNumber = parseInt((Math.random()*100 + 1));
+
+const submit = document.querySelector('#subt')
+const userInput =  document.querySelector('#guessField')
+const guessSlot = document.querySelector('.guesses')
+const remaining = document.querySelector('.lastResult')
+const lowOrHi = document.querySelector('.lowOrHi')
+const startOver = document.querySelector('.resultParas')
+
+
+const p = document.createElement('p')
+
+
+let prevGuess = [] //to submit user values 
+
+let numAttempts = 1 //attempts user is allowed
+
+let playGame = true //to check at each step in every game
+
+if(playGame){
+    submit.addEventListener('click',function(e){
+        e.preventDefault();
+        const guess= parseInt(userInput.value);
+        
+        validateGuess(guess);
+    })
+}
+function validateGuess(guess){
+    if(isNaN(guess)){
+        alert('Please enter a valid number');
+    }
+    else if(guess<1){
+        alert('Please enter a number more than one');
+    }
+    else if(guess>100){
+        alert('Please enter a number less than 100');
+    }
+    else{
+        prevGuess.push(guess)
+        if(numAttempts===11){
+            displayGuess(guess)
+            displayMessage(`Game Over. Random number was ${randomNumber}`)
+            endGame()
+        }
+        else{
+            displayGuess(guess)
+            checkGuess(guess)
+        }
+    }
+
+}
+function checkGuess(guess){
+    //to check if number matches the guessed one or not 
+    //low or high check message printing
+    if(guess === randomNumber){
+        displayMessage(`You guessed it right!`)
+        endGame()
+    }
+    else if(guess<randomNumber){
+        displayMessage(`Number is too low`)
+    }
+    else if(guess>randomNumber){
+        displayMessage(`Number is too high`)
+    }
+
+}
+function displayMessage(message){
+    //user input value empty and innerhtml add guess and reduce the attempts number
+    lowOrHi.innerHTML = `<h2>${message}</h2>`
+}
+
+function displayGuess(guess){
+    //display guess
+    userInput.value=''
+    guessSlot.innerHTML+=`${guess} ,`
+    numAttempts++
+    remaining.innerHTML=`${11-numAttempts}` 
+}
+
+function endGame(){
+    userInput.value = ''
+    userInput.setAttribute('disabled','')
+    p.classList.add('button')
+    p.innerHTML = `<h2 id="newGame">Start new Game</h2>`
+    startOver.appendChild(p)
+    playGame=false
+    newGame()
+}
+
+function newGame(){
+    const newGameButton = document.querySelector('#newGame')
+    newGameButton.addEventListener('click',function(e){
+        randomNumber = parseInt((Math.random()*100 + 1));
+        prevGuess=[]
+        numAttempts=1
+        guessSlot.innerHTML=''
+        remaining.innerHTML=`${11-numAttempts}` 
+        userInput.removeAttribute('disabled')
+        startOver.removeChild(p)
+        lowOrHi.innerHTML=''
+        playGame = true
+    })
+}
+
 ```
