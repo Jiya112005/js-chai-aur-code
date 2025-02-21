@@ -20,6 +20,9 @@ or prototypes
 
 ## four keywords/pillars
 Abstraction :fetch hide details of data
+
 Polymorphism : many ways for same operation 
+
 Encapsulation: wrap up
-Inheritance: 
+
+Inheritance: in prototype video detail explanation 
