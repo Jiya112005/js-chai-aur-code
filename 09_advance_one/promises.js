@@ -39,7 +39,7 @@
 
 // const promiseFour = new Promise(function(resolve,reject){
 //     setTimeout(function(){
-//         let error = true                 //suppose netowrk request or web request or any file req is send if file access then also have to do something and true for the false condition too
+//         let error = true                 //suppose netowork request or web request or any file req is send if file access then also have to do something and true for the false condition too
 //         if(!error){
 //             resolve({username:"abcdef",password:"123"})
 //         }else{
@@ -63,29 +63,30 @@
     
 // })
 
-const promiseFive = new Promise((resolve,reject)=>{
-    setTimeout(function(){
-        let error = true                
-        if(!error){
-            resolve({username:"javascript",password:"123"})
-        }else{
-            reject('ERROR:js went wrong ')
-        }
+// const promiseFive = new Promise((resolve,reject)=>{
+//     setTimeout(function(){
+//         let error = true  //change this to false                 
+//         if(!error){
+//             resolve({username:"javascript",password:"123"})
+//         }else{
+//             reject('ERROR:js went wrong ')
+//         }
 
-    },1000)
-})
+//     },1000)
+// })
 //not mandatory to use promise by .then and .catch also needed in future to resolve the issue 
 //cases when no database connection then don't want to go to next step
-async function consumePromiseFive(){
-    try {
-        const response = await promiseFive
-        console.log(response);
-    } catch (error) {
-        console.log(error);
+// async function consumePromiseFive(){
+//     try{
+//     const response = await promiseFive
+//     console.log(response);
+//     }catch(error){
+//         console.log(error);
         
-    }
-}
-consumePromiseFive()
+//     }
+    
+// }
+// consumePromiseFive()
 
 //promise designed with no error functionality or no error can occur async will run but if error occurs or network can't access the
 //async await can't handle the problems directly hence to handle it use of try and catch can be done 
@@ -93,24 +94,23 @@ consumePromiseFive()
 // async function getAllUsers(){
 //     try {
 //         const response = await fetch('https://jsonplaceholder.typicode.com/users')
-//          const data = await response.json()  //conversion takes time from response to json hence should take await for wait for this also 
+//          const data =  await response.json()  //conversion takes time from response to json hence should take await for wait for this also 
 //          console.log(data); 
         
         
 //     } catch (error) {
-//         console.log(error);
+//         console.log("E:",error);
         
 //     }
 // }
 // getAllUsers()
 
-//doing same with promise then and catch
+//doing same with promise then and catch format 
 fetch('https://jsonplaceholder.typicode.com/users')
 .then((response)=>{
     return response.json()
 })
 .then((data)=>{
     console.log(data);
-    
 })
 .catch((error)=>{console.log(error);})
